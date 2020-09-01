@@ -39,8 +39,8 @@ func s:StartKillerSheep()
     call s:Sorry('Sorry, This build of Vim is lacking the +textprop feature')
     return
   endif
-  if &lines < 45
-    call s:Sorry('Need at least a terminal height of 45 lines')
+  if &lines < 30
+    call s:Sorry('Need at least a terminal height of 30 lines')
     return
   endif
 
