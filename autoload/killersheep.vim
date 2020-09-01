@@ -96,16 +96,16 @@ func s:IntroHighlight(idx)
 endfunc
 
 func s:IntroFilter(id, key)
-  if a:key == 's' || a:key == 'S'
+"  if a:key == 's' || a:key == 'S'
     call s:Clear()
     let s:round = 0
     let s:ready = popup_create('Get Ready!', #{border: [], padding: [2, 4, 2, 4]})
     call s:BlinkLevel(s:ready, 1)
     call timer_start(s:blink_time * 8, { -> s:NextRound()})
     let s:ready_timer = timer_start(300, {... -> s:ReadySound()})
-  elseif a:key == 'x' || a:key == 'X' || a:key == "\<Esc>"
-    call s:Clear()
-  endif
+"  elseif a:key == 'x' || a:key == 'X' || a:key == "\<Esc>"
+"    call s:Clear()
+"  endif
   return 1
 endfunc
 
@@ -561,22 +561,24 @@ func s:BlinkLevel(winid, on)
 endfunc
 
 func s:PlaySoundForEnd()
-  let s:frozen = 1
-  if s:sheepcount == 0
-    call s:PlaySound('win')
-    if s:round == 5
-      echomsg 'Amazing, you made it through ALL levels! (did you cheat???)'
-      let s:end_timer = timer_start(2000, {x -> s:Clear()})
-    else
-      call popup_settext(s:levelid, 'Level ' .. (s:round + 1))
-      call s:BlinkLevel(s:levelid, 1)
-      call timer_start(2000, {x -> s:NextRound()})
-    endif
-  else
-    call s:StopMusic()
-    call s:PlaySound('fail')
-    let s:end_timer = timer_start(4000, {x -> s:Clear()})
-  endif
+  call s:Clear()
+  call s:Intro()
+"  let s:frozen = 1
+"  if s:sheepcount == 0
+"    call s:PlaySound('win')
+"    if s:round == 5
+"      echomsg 'Amazing, you made it through ALL levels! (did you cheat???)'
+"      let s:end_timer = timer_start(2000, {x -> s:Clear()})
+"    else
+"      call popup_settext(s:levelid, 'Level ' .. (s:round + 1))
+"      call s:BlinkLevel(s:levelid, 1)
+"      call timer_start(2000, {x -> s:NextRound()})
+"    endif
+"  else
+"    call s:StopMusic()
+"    call s:PlaySound('fail')
+"    let s:end_timer = timer_start(4000, {x -> s:Clear()})
+"  endif
 endfunc
 
 func s:Clear()
