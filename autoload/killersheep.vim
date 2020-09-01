@@ -374,10 +374,10 @@ func s:AnimSheep(id, state)
   endif
   let left = getwinvar(a:id, 'left')
   if left == 1
-    if pos.line > &lines - 11
-      call s:PlaySoundForEnd()
-    endif
-    call popup_setoptions(a:id, #{pos: 'topleft', col: &columns + 1, line: pos.line + 5})
+"    if pos.line > &lines - 11
+"      call s:PlaySoundForEnd()
+"    endif
+    call popup_setoptions(a:id, #{pos: 'topleft', col: &columns + 1, line: pos.line + 0})
     let left = 0
   elseif pos.col > 1
     call popup_move(a:id, #{col: pos.col - 1})
@@ -481,9 +481,9 @@ func s:MovePoop(x, id)
     call popup_move(a:id, #{line: pos.line + 2})
     let winid = popup_locate(pos.line + 2, pos.col)
     " TODO: no hit if no overlap
-    if winid != 0 && winid == s:canon_id
-      call s:PlaySoundForEnd()
-    endif
+"    if winid != 0 && winid == s:canon_id
+"      call s:PlaySoundForEnd()
+"    endif
   endif
 endfunc
 
