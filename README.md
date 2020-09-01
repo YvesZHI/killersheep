@@ -1,5 +1,8 @@
 # killersheep
 
+### Forked from the official killersheep but an infinite version.
+------------
+
 Silly game to show off the new features of Vim 8.2:
 -   Popup windows with colors and mask
 -   Text properties to highlight text
